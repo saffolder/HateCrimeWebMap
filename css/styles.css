@@ -12,17 +12,47 @@
 }
 
 #sidebar {
-  background: #aaa;
-  position: fixed;
   top: 0px;
   right: 0px;
   bottom: 0px;
   width: 20%;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 #sidebar h1 {
   margin-left: 10px;
+}
+
+#sidebar, #footer {
+  background: #aaa;
+  position: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#footer {
+  top: 75%;
+  bottom: 0px;
+  width: 80%;
+}
+
+#hoveredState {
+  height: 20%;
+  background: white;
+}
+
+#hoveredState, .stateName {
+  text-align: center;
+  font-size: x-large;
+}
+
+#dashboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.stateCard {
+background: white;
+padding: 15px;
 }
 
 #description {
