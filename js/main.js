@@ -12,8 +12,8 @@ function init() {
 const map = new mapboxgl.Map({
 container: "map", // container ID
 style: "mapbox://styles/mapbox/dark-v10", // map style
-zoom: 4, // starting zoom
-center: [-98.5795, 39.8283] // starting center
+zoom: 3.5, // starting zoom
+center: [-98.5795, 35.8283] // starting center
 });
 
 async function geojsonFetch() {
@@ -47,8 +47,14 @@ map.on("load", function loadingData() {
             ],
             'fill-outline-color': '#BBBBBB',
             'fill-opacity': 0.75,
-        }
+        },
+
+        map.on('click', 'stateData-layer', (event) => {
+          // TODO FILL IN WITH ADDING STATE CARD
+        });
+
     });
+
 
     const layers = [
     '0-9',
