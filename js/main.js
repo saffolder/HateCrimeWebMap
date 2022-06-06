@@ -18,21 +18,21 @@ center: [-98.5795, 35.8283] // starting center
 
 async function geojsonFetch() {
 let response = await fetch("assets/us-states.geojson");
-let stateData = await response.json();
+let states = await response.json();
 map.on("load", function loadingData() {
-    map.addSource('stateData', {
+    map.addSource('states', {
         type: 'geojson',
-        data: stateData
+        data: states
     });
 
     map.addLayer({
         'id': 'stateData-layer',
         'type': 'fill',
-        'source': 'stateData',
+        'source': 'states',
         'paint': {
             'fill-color': [
             'step',
-            ['get', 'hate_crime_data_rates'], // we ought to change the colors if we're using dark theme
+            ['get', 'hate_crime_data_counts'], // we ought to change the colors if we're using dark theme
             '#FFEDA0',                        // something less bright would be better
             10,
             '#FED976',
@@ -47,12 +47,31 @@ map.on("load", function loadingData() {
             ],
             'fill-outline-color': '#BBBBBB',
             'fill-opacity': 0.75,
-        },
+        }
+    });
 
-        map.on('click', 'stateData-layer', (event) => {
+            /*map.on('click', 'stateData-layer', (event) => {
           // TODO FILL IN WITH ADDING STATE CARD
         });
 
+    map.on('click', ({point}) => {
+        const state = map.queryRenderedFeatures(point, {
+            layers: ['stateData-layer']
+        });
+        addStateCard();
+    });*/
+
+    /**
+     * Updates the dashboard with the name of the State Hovered Over
+     * TODO: Add the # of hate crimes from the db
+     */
+    map.on('mousemove', ({point}) => {
+        const state = map.queryRenderedFeatures(point, {
+            layers: ['stateData-layer']
+        });
+        document.getElementById('hoveredState').innerHTML = state.length ?
+        `# of Hate Crimes in 2019 for ${state[0].properties.NAME}: ${state[0].properties.hate_crime_data_counts}` :
+        `Hover over a State`;
     });
 
 
