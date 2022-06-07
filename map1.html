@@ -36,12 +36,13 @@
         }
 
         #legend {
-            padding: 10px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            margin-left: 10px;
             line-height: 18px;
-            height: 250px;
-            margin-bottom: 40px;
+            height: 200px;
             width: 150px;
+            border-style: solid none;
+            border-width: 2px;
+            border-color: gray;
         }
 
         .legend-key {
@@ -65,9 +66,10 @@
 
 <body>
     <div id="sidebar">
-        <h1>United States Hate Crime per Capita Map</h1>
+        <h1>United States Hate Crime per 100k Map</h1>
         <div id="description">
-            <p>This is a map showing the number of race-based hate crimes per capita in the United States by state.</p>
+            <p>This is a map showing the number of race-based hate crimes for every 100 thousand people in the United States by state.</p>
+            <p><em>Click a state for exact numbers.</em></p>
         </div>
         <div id="legend"></div>
         <div id="footnotes">
@@ -101,7 +103,7 @@
             });
 
             async function geojsonFetch() {
-                let response = await fetch("assets/us-states.geojson");
+                let response = await fetch("assets/us-states-new.geojson");
                 let stateData = await response.json();
                 map.on("load", function loadingData() {
                     map.addSource('stateData', {
@@ -116,44 +118,53 @@
                         'paint': {
                             'fill-color': [
                             'step',
-                            ['get', 'hate_crime_data_rates'], // we ought to change the colors if we're using dark theme
-                            '#FFEDA0',                        // something less bright would be better
-                            10,
+                            ['get', 'hate_crimes_per_100k'],
+                            '#FFEDA0',
+                            0.2,
                             '#FED976',
-                            20,
+                            0.4,
                             '#FEB24C',
-                            50,
+                            0.6,
                             '#FD8D3C',
-                            100,
+                            1.0,
                             '#FC4E2A',
-                            200,
+                            2.0,
                             '#E31A1C',
+                            4.0,
+                            '#D10D0F'
                             ],
-                            'fill-outline-color': '#BBBBBB',
+                            'fill-outline-color': '#777777',
                             'fill-opacity': 0.75,
                         }
                     });
 
+                    // layers
                     const layers = [
-                    '0-9',
-                    '10-19',
-                    '20-49',
-                    '50-99',
-                    '100-199',
-                    '200+'
-                    ];
-                    const colors = [    // if/when we change choropleth colors, don't forget to change them here, too.
-                        '#FFEDA070',
-                        '#FED97670',
-                        '#FEB24C70',
-                        '#FD8D3C70',
-                        '#FC4E2A70',
-                        '#E31A1C70',
+                        '0.00 - 0.20',
+                        '0.21 - 0.40',
+                        '0.41 - 0.60',
+                        '0.61 - 1.00',
+                        '1.01 - 2.00',
+                        '2.01 - 4.00',
+                        '4.01+'
                     ];
 
+                    // colors
+                    const colors = [
+                        '#FFEDA0',
+                        '#FED976',
+                        '#FEB24C',
+                        '#FD8D3C',
+                        '#FC4E2A',
+                        '#E31A1C',
+                        '#D10D0F'
+                    ];
+
+                    // create legend
                     const legend = document.getElementById('legend');
+                    // legend title
                     legend.innerHTML = '<p><b>Number of hate crimes by state</b></p>'
-
+                    // legend itself
                     layers.forEach((layer, i) => {
                         const color = colors[i];
                         const item = document.createElement('div');
@@ -166,6 +177,24 @@
                         item.appendChild(key);
                         item.appendChild(value);
                         legend.appendChild(item);
+                    });
+
+                    // when clicking on a state, show popup with state's name and the number of racially-motivated hate crimes per 100k
+                    map.on('click', 'stateData-layer', (e) => {
+                        new mapboxgl.Popup()
+                        .setLngLat(e.lngLat)
+                        .setHTML('<strong>' + e.features[0].properties.NAME + '</strong><br>' + e.features[0].properties.hate_crimes_per_100k + ' racially-motivated hate crimes per 100k.')
+                        .addTo(map);
+                    });
+                    
+                    // change cursor to pointer when hovering over state
+                    map.on('mouseenter', 'stateData-layer', () => {
+                        map.getCanvas().style.cursor = 'pointer';
+                    });
+                    
+                    // change cursor to grabby hand when no longer hovering over state
+                    map.on('mouseleave', 'stateData-layer', () => {
+                        map.getCanvas().style.cursor = '';
                     });
                 });
             };
