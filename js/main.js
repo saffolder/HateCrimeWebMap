@@ -32,7 +32,7 @@ map.on("load", function loadingData() {
         'paint': {
             'fill-color': [
             'step',
-            ['get', 'hate_crime_data_counts'], // we ought to change the colors if we're using dark theme
+            ['get', 'hate_crime_data_rates'], // we ought to change the colors if we're using dark theme
             '#FFEDA0',                        // something less bright would be better
             10,
             '#FED976',
@@ -52,14 +52,61 @@ map.on("load", function loadingData() {
 
             /*map.on('click', 'stateData-layer', (event) => {
           // TODO FILL IN WITH ADDING STATE CARD
-        });
+        });*/
 
     map.on('click', ({point}) => {
         const state = map.queryRenderedFeatures(point, {
             layers: ['stateData-layer']
         });
-        addStateCard();
-    });*/
+        addStateCard(state);
+    });
+
+    /**
+     * When a state is clicked: adds a card to dashboard containing:
+     * State Name, list of top 3 hate crimes, demographics chart
+     */
+    function addStateCard(state) {
+        //document.querySelector('.stateName').textContent = 'washington';
+        const card = document.createElement('div');
+        card.className = 'stateCard';
+
+        const name = document.createElement('div');
+        name.innerHTML = state[0].properties.NAME;
+        name.className = 'stateName';
+
+        const graphics = document.createElement('div');
+        graphics.className = 'graphics';
+
+        const pieChart = document.createElement('img');
+        // pieChart.src = null;// TODO: CREATE ALL CHARTS
+        pieChart.className = 'pieChart';
+
+        const list = document.createElement('div');
+        list.className = 'stateList';
+
+        const ol = document.createElement('ol');
+        const li1 = document.createElement('li');
+        li1.innerHTML = 'temp1'; // TODO IMPLEMENT LIST
+
+        const li2 = document.createElement('li');
+        li2.innerHTML = 'temp2'; // TODO IMPLEMENT LIST
+
+        const li3 = document.createElement('li');
+        li3.innerHTML = 'temp3'; // TODO IMPLEMENT LIST
+
+        ol.appendChild(li1);
+        ol.appendChild(li2);
+        ol.appendChild(li3);
+        list.appendChild(ol);
+
+        graphics.appendChild(pieChart);
+        graphics.appendChild(list);
+
+        card.appendChild(name);
+        card.appendChild(graphics);
+
+        document.getElementById('dashboard').appendChild(card);
+    }
 
     /**
      * Updates the dashboard with the name of the State Hovered Over
@@ -70,7 +117,7 @@ map.on("load", function loadingData() {
             layers: ['stateData-layer']
         });
         document.getElementById('hoveredState').innerHTML = state.length ?
-        `# of Hate Crimes in 2019 for ${state[0].properties.NAME}: ${state[0].properties.hate_crime_data_counts}` :
+        `# of Race Based Hate Crimes in 2019 for ${state[0].properties.NAME}: ${state[0].properties.hate_crime_data_rates}` :
         `Hover over a State`;
     });
 
