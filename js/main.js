@@ -50,23 +50,39 @@ map.on("load", function loadingData() {
         }
     });
 
-            /*map.on('click', 'stateData-layer', (event) => {
-          // TODO FILL IN WITH ADDING STATE CARD
-        });*/
-
+    /**
+     * Adds a State to the dashboard when clicked
+     */
     map.on('click', ({point}) => {
         const state = map.queryRenderedFeatures(point, {
             layers: ['stateData-layer']
         });
-        addStateCard(state);
+        if (notInList(state)) {
+            addStateCard(state);
+        }
     });
+
+    /**
+     * Checks whether a State card is already on the dashboard
+     * @returns false if in the deck already, else true
+     */
+    function notInList(state) {
+        const names = document.querySelectorAll('.stateName');
+        const contains = true;
+        names.forEach((name) => {
+            if (name.innerHTML === state[0].properties.NAME) {
+                contains = false;
+           }
+        })
+        return contains;
+    }
 
     /**
      * When a state is clicked: adds a card to dashboard containing:
      * State Name, list of top 3 hate crimes, demographics chart
      */
     function addStateCard(state) {
-        //document.querySelector('.stateName').textContent = 'washington';
+
         const card = document.createElement('div');
         card.className = 'stateCard';
 
@@ -84,15 +100,18 @@ map.on("load", function loadingData() {
         const list = document.createElement('div');
         list.className = 'stateList';
 
+        const topCrimes = state[0].properties;
+        console.log(topCrimes);
+
         const ol = document.createElement('ol');
         const li1 = document.createElement('li');
-        li1.innerHTML = 'temp1'; // TODO IMPLEMENT LIST
+        li1.innerHTML = state[0].properties.top_3_hate_crimes; // TODO IMPLEMENT LIST
 
         const li2 = document.createElement('li');
-        li2.innerHTML = 'temp2'; // TODO IMPLEMENT LIST
+        li2.innerHTML = state[0].properties.top_3_hate_crimes[1]; // TODO IMPLEMENT LIST
 
         const li3 = document.createElement('li');
-        li3.innerHTML = 'temp3'; // TODO IMPLEMENT LIST
+        li3.innerHTML = state[0].properties.top_3_hate_crimes[2]; // TODO IMPLEMENT LIST
 
         ol.appendChild(li1);
         ol.appendChild(li2);
@@ -118,7 +137,7 @@ map.on("load", function loadingData() {
         });
         document.getElementById('hoveredState').innerHTML = state.length ?
         `# of Race Based Hate Crimes in 2019 for ${state[0].properties.NAME}: ${state[0].properties.hate_crime_data_rates}` :
-        `Hover over a State`;
+        `Hover over a State for quick stats, or click for more in depth results.`;
     });
 
 
