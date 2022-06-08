@@ -29,9 +29,15 @@
 }
 
 #footer {
-  top: 75%;
+  top: 65%;
   bottom: 0px;
   width: 80%;
+}
+
+.remove {
+  width: 10px;
+  height: 10px;
+  background: red;
 }
 
 #hoveredState {
@@ -53,6 +59,10 @@
 .stateCard {
 background: white;
 padding: 15px;
+outline: red 1px solid;
+width: 33%;
+display: flex;
+justify-content: space-between;
 }
 
 #description {
