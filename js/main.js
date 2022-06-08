@@ -19,6 +19,8 @@ center: [-98.5795, 33.8283] // starting center
 async function geojsonFetch() {
 let response = await fetch("assets/us-states.geojson");
 let states = await response.json();
+let response2 = await fetch("assets/demographics.json");
+let demographics = await response2.json();
 map.on("load", function loadingData() {
     map.addSource('states', {
         type: 'geojson',
@@ -94,11 +96,18 @@ map.on("load", function loadingData() {
         remove.className = 'remove';
         remove.addEventListener('click', removeCard);
 
-        var data = [{
+        /*var data = [{
             type: 'pie',
             values: [19,26,55],
             labels: ['sam', 'luke', 'noah'],
             automargin: true
+        }];*/
+        var data = [{
+            type: 'pie',
+            values: demographics[state[0].properties.NAME].values,
+            labels: demographics[state[0].properties.NAME].labels,
+            automargin: true,
+            textinfo: 'none'
         }];
         var layout = {
             height: 180,
@@ -108,7 +117,6 @@ map.on("load", function loadingData() {
         }
         const pieChart = document.createElement('div');
         pieChart.className = 'pieChart';
-        //pieChart.src = '/assets/newplot (1).png';
         Plotly.newPlot(pieChart, data, layout);
 
         const list = document.createElement('div');
