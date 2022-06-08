@@ -1,156 +1,164 @@
+<!DOCTYPE html>
+<html>
 <head>
-
-  <style>
+    <title>About</title>
+    <link rel="icon" href="img/zflushed.png">
+    <meta charset="utf-8" />
+    <style>
         body {
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 0;
-    }
-
-    html {
-      box-sizing: border-box;
-    }
-
-    *, *:before, *:after {
-      box-sizing: inherit;
-    }
-
-    .column {
-      float: left;
-      width: 33.3%;
-      margin-bottom: 16px;
-      padding: 0 8px;
-    }
-
-    .card {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      margin: 8px;
-    }
-
-    .about-section {
-      padding: 50px;
-      text-align: center;
-      background-color: #474e5d;
-      color: white;
-    }
-
-    .container {
-      padding: 0 16px;
-    }
-
-    .container::after, .row::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
-
-    .title {
-      color: grey;
-    }
-
-    .button {
-      border: none;
-      outline: 0;
-      display: inline-block;
-      padding: 8px;
-      color: white;
-      background-color: #000;
-      text-align: center;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    .button:hover {
-      background-color: #555;
-    }
-
-    @media screen and (max-width: 650px) {
-      .column {
-        width: 100%;
-        display: block;
-      }
-    }
-  </style>
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+    
+        html {
+            box-sizing: border-box;
+        }
+    
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+    
+        .column {
+            float: left;
+            width: 33.3%;
+            margin-bottom: 16px;
+            padding: 0 8px;
+        }
+    
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin: 8px;
+        }
+    
+        .about-section {
+            padding: 50px;
+            text-align: center;
+            background-color: #474e5d;
+            color: white;
+        }
+    
+        .container {
+            padding: 0 16px;
+        }
+    
+        .container::after, .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    
+        .title {
+            color: grey;
+        }
+    
+        .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+    
+        .button:hover {
+            background-color: #555;
+        }
+    
+        @media screen and (max-width: 650px) {
+            .column {
+            width: 100%;
+            display: block;
+            }
+        }
+    </style>
 </head>
-
-
-
-<div class="about-section">
-  <h1>Hate Crime Web Map</h1>
-  <p>Created by Group AB3: Samuel Affolder, Draco Bynum, Liam Geary, Luke Houser, Adam Nicewarner</p>
-</div>
-
-<h2>Project Summary:</h2>
-<p>Our project is to make a choropleth web map covering the United States which shows differences in hate crime statistics,
-  grouped by states; as well as providing information on the demographics of each state. We’ll be getting hate crime statistics
-  from the Uniform Crime Report and population data that includes race from the US Census. There are two goals for this map: 
-  first, it should show to the general populace the scope at which hate crimes occur; second, it should allow the reader to make 
-  their own informed decision on if they think there is any correlation between a state’s demographics and their respective number 
-  and type of hate crimes.</p>
-<p>USA Hate Crimes per 100K map:</p><a href="map1.html">
-<img src="img/percapmap.JPG" alt="Jane" style="width:100%"></a>
-<p>USA Hate Crimes in Raw numbers map:</p><a href="map1.html">
-<img src="img/rawnummap.JPG" alt="Jane" style="width:100%"></a>
-
-
-
-<h2 style="text-align:center">Our Team</h2>
-<div class="row">
-  <div class="column">
-    <div class="card">
-      <img src="img/pinecone.jpg" alt="Adam" style="width:100%">
-      <div class="container">
-        <h2>Adam Nicewarner</h2>
-        <p>Senior at UW, majoring in Geography and Data Science. Likes long walks on the beach and video games. </p>
-        <p><button class="button">Contact</button></p>
-      </div>
+  
+  
+<body>
+    <div class="about-section">
+        <h1>Hate Crime Web Map</h1>
+        <p>Created by Group AB3: Samuel Affolder, Draco Bynum, Liam Geary, Luke Houser, Adam Nicewarner</p>
     </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <img src="/w3images/team2.jpg" alt="Mike" style="width:100%">
-      <div class="container">
-        <h2>Draco Bynum</h2>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>mike@example.com</p>
-        <p><button class="button">Contact</button></p>
-      </div>
+  
+    <h2>Project Summary:</h2>
+    <p>
+        Our project is to make a choropleth web map covering the United States which shows differences in hate crime statistics,
+        grouped by states; as well as providing information on the demographics of each state. We’ll be getting hate crime statistics
+        from the Uniform Crime Report and population data that includes race from the US Census. There are two goals for this map: 
+        first, it should show to the general populace the scope at which hate crimes occur; second, it should allow the reader to make 
+        their own informed decision on if they think there is any correlation between a state’s demographics and their respective number 
+        and type of hate crimes.
+    </p>
+    <p>USA Hate Crimes per 100K map:</p><a href="map1.html">
+    <img src="img/percapmap.JPG" alt="Jane" style="width:100%"></a>
+    <p>USA Hate Crimes in Raw numbers map:</p><a href="map1.html">
+    <img src="img/rawnummap.JPG" alt="Jane" style="width:100%"></a>
+  
+  
+  
+    <h2 style="text-align:center">Our Team</h2>
+    <div class="row">
+        <div class="column">
+        <div class="card">
+            <img src="img/pinecone.jpg" alt="Adam" style="width:100%">
+            <div class="container">
+            <h2>Adam Nicewarner</h2>
+            <p>Senior at UW, majoring in Geography and Data Science. Likes long walks on the beach and video games. </p>
+            <p><button class="button">Contact</button></p>
+            </div>
+        </div>
+        </div>
+    
+        <div class="column">
+        <div class="card">
+            <img src="/w3images/team2.jpg" alt="Mike" style="width:100%">
+            <div class="container">
+            <h2>Draco Bynum</h2>
+            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+            <p>mike@example.com</p>
+            <p><button class="button">Contact</button></p>
+            </div>
+        </div>
+        </div>
+    
+        <div class="column">
+        <div class="card">
+            <img src="/w3images/team2.jpg" alt="Mike" style="width:100%">
+            <div class="container">
+            <h2>Samuel Affolder</h2>
+            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+            <p>mike@example.com</p>
+            <p><button class="button">Contact</button></p>
+            </div>
+        </div>
+        </div>
+    
+        <div class="column">
+        <div class="card">
+            <img src="img/Geary_Liam.jpg" alt="Liam" style="width:100%">
+            <div class="container">
+            <h2>Liam Geary</h2>
+            <p>Graduating with a BA in Geography / Data Science later this week. Woohoo.</p>
+            <p>lrgeary@uw.edu</p>
+            <p><button class="button">Contact</button></p>
+            </div>
+        </div>
+        </div>
+    
+        <div class="column">
+        <div class="card">
+            <img src="/w3images/team3.jpg" alt="John" style="width:100%">
+            <div class="container">
+            <h2>Luke Houser</h2>
+            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+            <p>john@example.com</p>
+            <p><button class="button">Contact</button></p>
+            </div>
+        </div>
+        </div>
     </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <img src="/w3images/team2.jpg" alt="Mike" style="width:100%">
-      <div class="container">
-        <h2>Samuel Affolder</h2>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>mike@example.com</p>
-        <p><button class="button">Contact</button></p>
-      </div>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <img src="/w3images/team2.jpg" alt="Mike" style="width:100%">
-      <div class="container">
-        <h2>Liam Geary</h2>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>mike@example.com</p>
-        <p><button class="button">Contact</button></p>
-      </div>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <img src="/w3images/team3.jpg" alt="John" style="width:100%">
-      <div class="container">
-        <h2>Luke Houser</h2>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>john@example.com</p>
-        <p><button class="button">Contact</button></p>
-      </div>
-    </div>
-  </div>
-</div>
+</body>
+</html>
