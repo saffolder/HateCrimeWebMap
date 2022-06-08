@@ -13,7 +13,7 @@ const map = new mapboxgl.Map({
 container: "map", // container ID
 style: "mapbox://styles/mapbox/dark-v10", // map style
 zoom: 3.5, // starting zoom
-center: [-98.5795, 35.8283] // starting center
+center: [-98.5795, 33.8283] // starting center
 });
 
 async function geojsonFetch() {
@@ -57,7 +57,8 @@ map.on("load", function loadingData() {
         const state = map.queryRenderedFeatures(point, {
             layers: ['stateData-layer']
         });
-        if (notInList(state)) {
+        const names = document.querySelectorAll('.stateName');
+        if (names.length < 3 && notInList(state, names)) {
             addStateCard(state);
         }
     });
@@ -66,9 +67,8 @@ map.on("load", function loadingData() {
      * Checks whether a State card is already on the dashboard
      * @returns false if in the deck already, else true
      */
-    function notInList(state) {
-        const names = document.querySelectorAll('.stateName');
-        const contains = true;
+    function notInList(state, names) {
+        var contains = true;
         names.forEach((name) => {
             if (name.innerHTML === state[0].properties.NAME) {
                 contains = false;
@@ -90,41 +90,66 @@ map.on("load", function loadingData() {
         name.innerHTML = state[0].properties.NAME;
         name.className = 'stateName';
 
-        const graphics = document.createElement('div');
-        graphics.className = 'graphics';
+        const remove = document.createElement('div');
+        remove.className = 'remove';
+        remove.addEventListener('click', removeCard);
 
-        const pieChart = document.createElement('img');
-        // pieChart.src = null;// TODO: CREATE ALL CHARTS
+        var data = [{
+            type: 'pie',
+            values: [19,26,55],
+            labels: ['sam', 'luke', 'noah'],
+            automargin: true
+        }];
+        var layout = {
+            height: 180,
+            width: 180,
+            margin: {"t": 0, "b": 0, "l": 0, "r": 0},
+            showlegend: false
+        }
+        const pieChart = document.createElement('div');
         pieChart.className = 'pieChart';
+        //pieChart.src = '/assets/newplot (1).png';
+        Plotly.newPlot(pieChart, data, layout);
 
         const list = document.createElement('div');
         list.className = 'stateList';
 
-        const topCrimes = state[0].properties;
-        console.log(topCrimes);
+        const topCrimesString = state[0].properties.top_3_hate_crimes;
+        const topCrimes = topCrimesString.substring(1, topCrimesString.length - 1).split(',');
 
         const ol = document.createElement('ol');
         const li1 = document.createElement('li');
-        li1.innerHTML = state[0].properties.top_3_hate_crimes; // TODO IMPLEMENT LIST
+        li1.innerHTML = topCrimes[0].substring(1,topCrimes[0].length-1); // TODO IMPLEMENT LIST
 
         const li2 = document.createElement('li');
-        li2.innerHTML = state[0].properties.top_3_hate_crimes[1]; // TODO IMPLEMENT LIST
+        li2.innerHTML = topCrimes[1].substring(1,topCrimes[1].length-1); // TODO IMPLEMENT LIST
 
         const li3 = document.createElement('li');
-        li3.innerHTML = state[0].properties.top_3_hate_crimes[2]; // TODO IMPLEMENT LIST
+        li3.innerHTML = topCrimes[2].substring(1,topCrimes[2].length-1); // TODO IMPLEMENT LIST
 
         ol.appendChild(li1);
         ol.appendChild(li2);
         ol.appendChild(li3);
         list.appendChild(ol);
 
-        graphics.appendChild(pieChart);
-        graphics.appendChild(list);
+        const dataScreen = document.createElement('div');
+        dataScreen.className = 'data';
 
-        card.appendChild(name);
-        card.appendChild(graphics);
+        dataScreen.appendChild(remove);
+        dataScreen.appendChild(name);
+        dataScreen.appendChild(list);
+
+        card.appendChild(dataScreen);
+        card.appendChild(pieChart);
 
         document.getElementById('dashboard').appendChild(card);
+    }
+
+    /**
+     * Removes the card that was clicked on
+     */
+    function removeCard() {
+        this.parentElement.parentElement.remove();
     }
 
     /**
