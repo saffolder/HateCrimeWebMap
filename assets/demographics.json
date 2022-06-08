@@ -1,0 +1,206 @@
+{
+  "Alabama": {
+    "values": [3409415, 1364474, 87434],
+    "labels": ["white", "black", "asian"]
+  },
+  "Alaska": {
+    "values": [521962, 147358, 61551],
+    "labels": ["white", "alaska native", "asian"]
+  },
+  "Arizona": {
+    "values": [5947783,434612,422541],
+    "labels": ["white","black","hispanic"]
+  },
+  "Arkansas": {
+    "values": [2391900,502913,82974],
+    "labels": ["white","black","hispanic"]
+  },
+  "California": {
+    "values": [25133071,6762404,5895002],
+    "labels": ["white","asian","hispanic"]
+  },
+  "Colorado": {
+    "values": [5029314,313737,263806],
+    "labels": ["white","black","asian"]
+  },
+  "Connecticut": {
+    "values": [2772139,470791,228411],
+    "labels": ["white","black","hispanic"]
+  },
+  "Delaware": {
+    "values": [686096,237780,45365],
+    "labels": ["white","black","asian"]
+  },
+  "District of Columbia": {
+    "values": [333312,318457,38077],
+    "labels": ["black","white","asian"]
+  },
+  "Florida": {
+    "values": [16553934,3772874,828037],
+    "labels": ["white","black","hispanic"]
+  },
+  "Georgia": {
+    "values": [6363129,3556697,523612],
+    "labels": ["white","black","asian"]
+  },
+  "Hawaii": {
+    "values": [801987,582436,354987],
+    "labels": ["asian","white","native hawaiian"]
+  },
+  "Idaho": {
+    "values": [1652946,80118,44416],
+    "labels": ["white","hispanic","asian"]
+  },
+  "Illinois": {
+    "values": [9353507,1951681,834455],
+    "labels": ["white","black","asian"]
+  },
+  "Indiana": {
+    "values": [5732778,740150,206288],
+    "labels": ["white","black","asian"]
+  },
+  "Iowa": {
+    "values": [2900114,162710,95994],
+    "labels": ["white","black","asian"]
+  },
+  "Kansas": {
+    "values": [2537764,214714,108624],
+    "labels": ["white","black","asian"]
+  },
+  "Kentucky": {
+    "values": [3971124,424716,94285],
+    "labels": ["white","black","asian"]
+  },
+  "Louisiana": {
+    "values": [2954143,1554297,99072],
+    "labels": ["white","black","asian"]
+  },
+  "Maine": {
+    "values": [1289759,32313,23516],
+    "labels": ["white","black","asian"]
+  },
+  "Maryland": {
+    "values": [3467089,1946932,463258],
+    "labels": ["white","black","asian"]
+  },
+  "Massachusetts": {
+    "values": [5525268,684786,548125],
+    "labels": ["white","black","asian"]
+  },
+  "Michigan": {
+    "values": [8091386,1528779,394895],
+    "labels": ["white","black","asian"]
+  },
+  "Minnesota": {
+    "values": [4800334,454116,333624],
+    "labels": ["white","black","asian"]
+  },
+  "Mississippi": {
+    "values": [1766642,1156497,40448],
+    "labels": ["white","black","asian"]
+  },
+  "Missouri": {
+    "values": [5184435,792197,162980],
+    "labels": ["white","black","asian"]
+  },
+  "Montana": {
+    "values": [973711,90259,17354],
+    "labels": ["white","american indian","asian"]
+  },
+  "Nebraska": {
+    "values": [1715918,117408,62532],
+    "labels": ["white","black","asian"]
+  },
+  "Nevada": {
+    "values": [2105913,349520,347489],
+    "labels": ["white","hispanic","black"]
+  },
+  "New Hampshire": {
+    "values": [1287518,47854,30557],
+    "labels": ["white","asian","black"]
+  },
+  "New Jersey": {
+    "values": [6174937,1339574,953119],
+    "labels": ["white","black","asian"]
+  },
+  "New Mexico": {
+    "values": [1610185,226281,211040],
+    "labels": ["white","american indian","hispanic"]
+  },
+  "New York": {
+    "values": [12796656,3424002,1889234],
+    "labels": ["white","black","asian"]
+  },
+  "North Carolina": {
+    "values": [7393223,242132,387557],
+    "labels": ["white","black","hispanic"]
+  },
+  "North Dakota": {
+    "values": [677907,52745,30067],
+    "labels": ["white","american indian","black"]
+  },
+  "Ohio": {
+    "values": [9765556,1686729,348025],
+    "labels": ["white","black","asian"]
+  },
+  "Oklahoma": {
+    "values": [3135648,540542,365883],
+    "labels": ["white","american indian","black"]
+  },
+  "Oregon": {
+    "values": [3717165,263017,129081],
+    "labels": ["white","asian","american native"]
+  },
+  "Pennsylvania": {
+    "values": [10483806,1649737,536892],
+    "labels": ["white","black","asian"]
+  },
+  "Rhode Island": {
+    "values": [869057,101579,73269],
+    "labels": ["white","black","hispanic"]
+  },
+  "South Carolina": {
+    "values": [3544015,1441530,127224],
+    "labels": ["white","black","hispanic"]
+  },
+  "South Dakota": {
+    "values": [766781,92709,26679],
+    "labels": ["white","american indian","black"]
+  },
+  "Tennessee": {
+    "values": [5413418,1228973,164002],
+    "labels": ["white","black","asian"]
+  },
+  "Texas": {
+    "values": [21995420,3908287,1898004],
+    "labels": ["white","black","hispanic"]
+  },
+  "Utah": {
+    "values": [2893306,142626,118169],
+    "labels": ["white","hispanic","asian"]
+  },
+  "Vermont": {
+    "values": [600353,15149,13042],
+    "labels": ["white","asian","black"]
+  },
+  "Virginia": {
+    "values": [5994267,1820891,690204],
+    "labels": ["white","black","asian"]
+  },
+  "Washington": {
+    "values": [6056387,883108,429718],
+    "labels": ["white","asian","black"]
+  },
+  "West Virginia": {
+    "values": [1697080,86426,20033],
+    "labels": ["white","black","asian"]
+  },
+  "Wisconsin": {
+    "values": [5088607,438719,201512],
+    "labels": ["white","black","asian"]
+  },
+  "Wyoming": {
+    "values": [540317,19199,14143],
+    "labels": ["white","american indian","hispanic"]
+  }
+}
