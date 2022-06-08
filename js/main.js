@@ -96,12 +96,7 @@ map.on("load", function loadingData() {
         remove.className = 'remove';
         remove.addEventListener('click', removeCard);
 
-        /*var data = [{
-            type: 'pie',
-            values: [19,26,55],
-            labels: ['sam', 'luke', 'noah'],
-            automargin: true
-        }];*/
+        // Creates the pie charts
         var data = [{
             type: 'pie',
             values: demographics[state[0].properties.NAME].values,
@@ -127,13 +122,16 @@ map.on("load", function loadingData() {
 
         const ol = document.createElement('ol');
         const li1 = document.createElement('li');
-        li1.innerHTML = topCrimes[0].substring(1,topCrimes[0].length-1); // TODO IMPLEMENT LIST
+        li1.innerHTML = topCrimes[0].substring(1,topCrimes[0].length-1);
 
         const li2 = document.createElement('li');
-        li2.innerHTML = topCrimes[1].substring(1,topCrimes[1].length-1); // TODO IMPLEMENT LIST
+        li2.innerHTML = topCrimes[1].substring(1,topCrimes[1].length-1);
 
         const li3 = document.createElement('li');
-        li3.innerHTML = topCrimes[2].substring(1,topCrimes[2].length-1); // TODO IMPLEMENT LIST
+        li3.innerHTML = topCrimes[2].substring(1,topCrimes[2].length-1);
+
+        const note = document.createElement('h3');
+        note.innerHTML = 'Top Hate Crimes';
 
         ol.appendChild(li1);
         ol.appendChild(li2);
@@ -145,6 +143,7 @@ map.on("load", function loadingData() {
 
         dataScreen.appendChild(remove);
         dataScreen.appendChild(name);
+        dataScreen.appendChild(note);
         dataScreen.appendChild(list);
 
         card.appendChild(dataScreen);
